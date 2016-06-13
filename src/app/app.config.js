@@ -1,16 +1,22 @@
-function routing ($urlRouterProvider, $locationProvider) {
+function routing ($stateProvider, /* $urlRouterProvider, */$locationProvider) {
   'ngInject';
   $locationProvider.html5Mode(false);
-  $urlRouterProvider
- 		when('/phones', {
-			templateUrl: 'partials/phone-list.html',
-			controller: 'PhoneListCtrl'
-		}).
-		when('/phones/:phoneId', {
-			templateUrl: 'partials/phone-detail.html',
-			controller: 'PhoneDetailCtrl'
-		})
-  .otherwise('/');
+
+  $stateProvider
+    .state('base', {
+      url: '/',
+      views: {
+        'body@': {
+          template: require('../views/partials/phone-list.html'),
+          controller: 'PhoneListCtrl',
+          controllerAs: '$ctrl',
+          bindToController: true
+        }
+      }
+    });
+
+  // $urlRouterProvider
+		// .otherwise('/');
 };
 
 export default routing;

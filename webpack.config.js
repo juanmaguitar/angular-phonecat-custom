@@ -57,7 +57,9 @@ module.exports = (function makeWebpackConfig () {
 
   config.plugins.push(
     new HtmlWebpackPlugin({
-      template: './src/public/views/index.html',
+      title: 'aaaa',
+      hash: true,
+      template: './src/views/index.html',
       inject: 'body'
     })
   );
@@ -68,7 +70,7 @@ module.exports = (function makeWebpackConfig () {
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
       new CopyWebpackPlugin([{
-        from: path.resolve(__dirname, './src/public')
+        from: path.resolve(__dirname, './src/views')
       }], { ignore: ['*.html'] })
     );
   }
