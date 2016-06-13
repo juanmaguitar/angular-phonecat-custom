@@ -2,7 +2,7 @@ import angular from 'angular';
 
 import checkmark from './checkmark.js';
 
-var filters = angular.module('filters', [])
+angular.module('phonecatFilters', [])
   .filter('checkmark', checkmark)
 
-export default filters;
+export default 'phonecatFilters';

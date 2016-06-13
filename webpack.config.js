@@ -1,11 +1,11 @@
-  'use strict';
+'use strict';
 
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 var ENV = process.env.npm_lifecycle_event;
-var isProd = ENV === 'build';
+var isProd = (ENV === 'build');
 
 module.exports = (function makeWebpackConfig () {
   var config = {};
@@ -17,7 +17,7 @@ module.exports = (function makeWebpackConfig () {
   config.output = {
     path: path.resolve(__dirname, './dist'),
     publicPath: isProd ? '/' : 'http://localhost:8080/',
-    filename: isProd ? '[<nam></nam>e].[hash].js' : '[name].bundle.js',
+    filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
   };
 
@@ -46,20 +46,23 @@ module.exports = (function makeWebpackConfig () {
     }, {
       test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
       loader: 'file'
-    }, {
+    },
+    // { test: /\.html$/, loader: 'raw', exclude: /node_modules/ }
+    {
       test: /\.html$/,
       loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html',
       exclude: /index\.html/
-    }]
+    }
+    ]
   };
 
   config.plugins = [];
 
   config.plugins.push(
     new HtmlWebpackPlugin({
-      title: 'aaaa',
+      title: 'phoneCat App',
       hash: true,
-      template: './src/views/index.html',
+      template: './src/_public/index.html',
       inject: 'body'
     })
   );
@@ -69,14 +72,17 @@ module.exports = (function makeWebpackConfig () {
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
-      new CopyWebpackPlugin([{
-        from: path.resolve(__dirname, './src/views')
-      }], { ignore: ['*.html'] })
+      new CopyWebpackPlugin( [
+          // { from: path.resolve(__dirname, './src/views') },
+          { from: path.resolve(__dirname, './src/data'), to: 'data' }
+        ],
+        { ignore: ['*.html'] }
+      )
     );
   }
 
   config.devServer = {
-    contentBase: './src/public',
+    contentBase: './src/_public',
     stats: 'minimal'
   };
 

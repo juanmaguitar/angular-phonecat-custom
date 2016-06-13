@@ -1,6 +1,5 @@
 class PhoneDetailCtrl {
   constructor ($routeParams, Phone) {
-    'ngInject';
 		this.phone = Phone.get(
 			{ phoneId: $routeParams.phoneId },
 			function(phone) {
@@ -13,5 +12,7 @@ class PhoneDetailCtrl {
 
   }
 }
+
+PhoneDetailCtrl.$inject = ['$routeParams', 'Phone'];
 
 export default PhoneDetailCtrl;

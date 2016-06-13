@@ -1,22 +1,22 @@
-function routing ($stateProvider, /* $urlRouterProvider, */$locationProvider) {
+import phoneList from '../views/phone-list.html';
+import phoneDetail from '../views/phone-detail.html';
+
+function routing ( $routeProvider, $locationProvider ) {
   'ngInject';
   $locationProvider.html5Mode(false);
 
-  $stateProvider
-    .state('base', {
-      url: '/',
-      views: {
-        'body@': {
-          template: require('../views/partials/phone-list.html'),
-          controller: 'PhoneListCtrl',
-          controllerAs: '$ctrl',
-          bindToController: true
-        }
-      }
-    });
-
-  // $urlRouterProvider
-		// .otherwise('/');
+  $routeProvider
+		.when('/phones', {
+		  templateUrl: phoneList,
+		  controller: 'PhoneListCtrl'
+		})
+		.when('/phones/:phoneId', {
+			templateUrl: phoneDetail,
+		  controller: 'PhoneDetailCtrl'
+		})
+		.otherwise({
+		  redirectTo: '/phones'
+		});
 };
 
 export default routing;
