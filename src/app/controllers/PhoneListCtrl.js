@@ -1,16 +1,9 @@
 class PhoneListCtrl {
-  constructor ($scope, Phone) {
-
-  	var self = this;//this.phones =
-    Phone.query( function(data) {
-    	self.phones = data;
-    	console.log(self)
-    	console.log(self.phones)
-    	console.log(self.phones[0].id)
-    });
-  	this.orderProp = 'age';
+  constructor (Phone) {
+    this.phones = Phone.query();
+    this.orderProp = 'age';
   }
 }
-PhoneListCtrl.$inject = ['$scope', 'Phone'];
+PhoneListCtrl.$inject = ['Phone'];
 
 export default PhoneListCtrl;

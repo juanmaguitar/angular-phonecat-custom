@@ -9,8 +9,7 @@ class PhoneDetailCtrl {
 		this.setImage = function(imageUrl) {
 			this.mainImageUrl = imageUrl;
 		}
-
-  }
+	}
 }
 
 PhoneDetailCtrl.$inject = ['$routeParams', 'Phone'];
