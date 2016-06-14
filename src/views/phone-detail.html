@@ -1,12 +1,12 @@
-<img ng-src="{{mainImageUrl}}" class="phone">
+<img ng-src="{{ $ctrl.mainImageUrl }}" class="phone">
 
-<h1>{{phone.name}}</h1>
+<h1>{{ $ctrl.phone.name }}</h1>
 
-<p>{{phone.description}}</p>
+<p>{{ $ctrl.phone.description }}</p>
 
 <ul class="phone-thumbs">
-  <li ng-repeat="img in phone.images">
-    <img ng-src="{{img}}" ng-click="setImage(img)">
+  <li ng-repeat="img in $ctrl.phone.images">
+    <img ng-src="{{ img }}" ng-click="$ctrl.setImage(img)">
   </li>
 </ul>
 
@@ -15,19 +15,19 @@
     <span>Availability and Networks</span>
     <dl>
       <dt>Availability</dt>
-      <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+      <dd ng-repeat="availability in $ctrl.phone.availability">{{ $ctrl.availability }}</dd>
     </dl>
   </li>
     ...
   <li>
     <span>Additional Features</span>
-    <dd>{{phone.additionalFeatures}}</dd>
+    <dd>{{ $ctrl.phone.additionalFeatures }}</dd>
   </li>
 </ul>
 
 <dl>
   <dt>Infrared</dt>
-  <dd>{{phone.connectivity.infrared | checkmark}}</dd>
+  <dd>{{ $ctrl.phone.connectivity.infrared | checkmark }}</dd>
   <dt>GPS</dt>
-  <dd>{{phone.connectivity.gps | checkmark}}</dd>
+  <dd>{{ $ctrl.phone.connectivity.gps | checkmark }}</dd>
 </dl>
