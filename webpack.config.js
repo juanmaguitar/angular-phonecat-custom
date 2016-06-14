@@ -1,11 +1,11 @@
-'use strict';
+  'use strict';
 
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 var ENV = process.env.npm_lifecycle_event;
-var isProd = (ENV === 'build');
+var isProd = ENV === 'build';
 
 module.exports = (function makeWebpackConfig () {
   var config = {};
@@ -30,7 +30,7 @@ module.exports = (function makeWebpackConfig () {
   config.resolve = {
     modulesDirectories: [
       'node_modules',
-      'src/public/views'
+      'src/views'
     ]
   };
 
@@ -47,12 +47,12 @@ module.exports = (function makeWebpackConfig () {
       test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
       loader: 'file'
     },
-    // { test: /\.html$/, loader: 'raw', exclude: /node_modules/ }
-    {
-      test: /\.html$/,
-      loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html',
-      exclude: /index\.html/
-    }
+    { test: /\.html$/, loader: 'raw', exclude: /node_modules/ }
+    // {
+    //   test: /\.html$/,
+    //   loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html',
+    //   exclude: /index\.html/
+    // }
     ]
   };
 
@@ -70,10 +70,10 @@ module.exports = (function makeWebpackConfig () {
   if (isProd) {
     config.plugins.push(
       new webpack.NoErrorsPlugin(),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
+      //new webpack.optimize.DedupePlugin(),
+      //new webpack.optimize.UglifyJsPlugin(),
       new CopyWebpackPlugin( [
-          // { from: path.resolve(__dirname, './src/views') },
+          { from: path.resolve(__dirname, './src/views') },
           { from: path.resolve(__dirname, './src/data'), to: 'data' }
         ],
         { ignore: ['*.html'] }

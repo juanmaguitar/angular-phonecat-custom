@@ -1,5 +1,5 @@
-import phoneList from '../views/phone-list.html';
-import phoneDetail from '../views/phone-detail.html';
+import phoneList from 'phone-list.html';
+import phoneDetail from 'phone-detail.html';
 
 function routing ( $routeProvider, $locationProvider ) {
   'ngInject';
@@ -7,12 +7,14 @@ function routing ( $routeProvider, $locationProvider ) {
 
   $routeProvider
 		.when('/phones', {
-		  templateUrl: phoneList,
-		  controller: 'PhoneListCtrl'
+		  template: phoneList,
+		  controller: 'PhoneListCtrl',
+		  controllerAs: '$ctrl'
 		})
 		.when('/phones/:phoneId', {
-			templateUrl: phoneDetail,
-		  controller: 'PhoneDetailCtrl'
+			template: phoneDetail,
+		  controller: 'PhoneDetailCtrl',
+		  controllerAs: '$ctrl'
 		})
 		.otherwise({
 		  redirectTo: '/phones'
