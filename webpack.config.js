@@ -3,6 +3,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var ENV = process.env.npm_lifecycle_event;
 var isProd = ENV === 'build';
@@ -43,11 +44,6 @@ module.exports = (function makeWebpackConfig () {
         loaders: ['ng-annotate', 'babel'],
         exclude: /node_modules/
       },
-      // CSS/SASS loaders
-      {
-        test: /\.(css|scss)$/,
-        loaders: ['style', 'css', 'sass']
-      },
       // Images loaders
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
@@ -67,14 +63,22 @@ module.exports = (function makeWebpackConfig () {
 
   config.plugins.push(
     new HtmlWebpackPlugin({
-      title: 'phoneCat App',
       hash: true,
       template: './src/_public/index.html',
       inject: 'body'
     })
   );
 
+  // Build Version
   if (isProd) {
+
+    // extract css to styles.css
+    config.module.loaders.push({
+      test: /\.(css|scss)$/,
+      loader: ExtractTextPlugin.extract ("css?sourceMap!sass?sourceMap")
+    })
+    config.plugins.push( new ExtractTextPlugin('styles.css') );
+
     config.plugins.push(
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
@@ -87,6 +91,15 @@ module.exports = (function makeWebpackConfig () {
         { ignore: ['*.html'] }
       )
     );
+
+  }
+  // Live Reload Version
+  else {
+    config.module.loaders.push({
+      test: /\.(css|scss)$/,
+      loaders: [ 'style', 'css?sourceMap', 'sass?sourceMap' ]
+    });
+
   }
 
   config.devServer = {
@@ -97,3 +110,33 @@ module.exports = (function makeWebpackConfig () {
   return config;
 }());
 
+
+/*
+
+var HtmlWebpackPlugin = require('../..');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var webpackMajorVersion = require('webpack/package.json').version.split('.')[0];
+
+module.exports = {
+  entry: './example.js',
+  output: {
+    path: __dirname + '/dist/webpack-' + webpackMajorVersion,
+    publicPath: '',
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
+      { test: /\.png$/, loader: 'file-loader' }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'template.html'
+    }),
+    new ExtractTextPlugin('styles.css')
+  ]
+};
+
+
+*/
