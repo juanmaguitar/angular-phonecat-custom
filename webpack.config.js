@@ -70,11 +70,12 @@ module.exports = (function makeWebpackConfig () {
   if (isProd) {
     config.plugins.push(
       new webpack.NoErrorsPlugin(),
-      //new webpack.optimize.DedupePlugin(),
-      //new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin(),
       new CopyWebpackPlugin( [
           { from: path.resolve(__dirname, './src/views') },
-          { from: path.resolve(__dirname, './src/data'), to: 'data' }
+          { from: path.resolve(__dirname, './src/_public/data'), to: 'data' },
+          { from: path.resolve(__dirname, './src/_public/img'), to: 'img' }
         ],
         { ignore: ['*.html'] }
       )
