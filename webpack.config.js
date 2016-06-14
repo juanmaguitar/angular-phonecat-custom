@@ -17,7 +17,8 @@ module.exports = (function makeWebpackConfig () {
 
   config.output = {
     path: path.resolve(__dirname, './dist'),
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    // publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '' : 'http://localhost:8080/',
     filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
   };
@@ -63,6 +64,7 @@ module.exports = (function makeWebpackConfig () {
 
   config.plugins.push(
     new HtmlWebpackPlugin({
+      hash: true,
       template: './src/_public/index.html',
       inject: 'body'
     })
@@ -83,7 +85,6 @@ module.exports = (function makeWebpackConfig () {
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
       new CopyWebpackPlugin( [
-          { from: path.resolve(__dirname, './src/views') },
           { from: path.resolve(__dirname, './src/_public/data'), to: 'data' },
           { from: path.resolve(__dirname, './src/_public/img'), to: 'img' }
         ],
