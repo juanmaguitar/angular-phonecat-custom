@@ -1,4 +1,8 @@
+// Styles
+import 'bootstrap/dist/css/bootstrap.css';
 import '../style/app.scss';
+
+// JS App
 import angular from 'angular';
 import ngRoute from 'angular-route';
 import ngResource from 'angular-resource';

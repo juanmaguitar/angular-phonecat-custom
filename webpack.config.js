@@ -36,18 +36,25 @@ module.exports = (function makeWebpackConfig () {
 
   config.module = {
     preLoaders: [],
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['ng-annotate', 'babel'],
-      exclude: /node_modules/
-    }, {
-      test: /\.scss$/,
-      loaders: ['style', 'css', 'sass']
-    }, {
-      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-      loader: 'file'
-    },
-    { test: /\.html$/, loader: 'raw', exclude: /node_modules/ }
+    loaders: [
+      // Javascript loaders
+      {
+        test: /\.js$/,
+        loaders: ['ng-annotate', 'babel'],
+        exclude: /node_modules/
+      },
+      // CSS/SASS loaders
+      {
+        test: /\.(css|scss)$/,
+        loaders: ['style', 'css', 'sass']
+      },
+      // Images loaders
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        loader: 'file'
+      },
+      // HTML loaders
+      { test: /\.html$/, loader: 'raw', exclude: /node_modules/ }
     // {
     //   test: /\.html$/,
     //   loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html',
