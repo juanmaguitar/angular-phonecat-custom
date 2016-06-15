@@ -1,0 +1,51 @@
+.pos-s 	{ position: static !important; }
+.pos-a 	{ position: absolute !important; }
+.pos-r 	{ position: relative !important; }
+.pos-f 	{ position: fixed !important; }
+
+.fl-n 	{ float: none !important; }
+.fl-l 	{ float: left !important; }
+.fl-r 	{ float: right !important; }
+
+.cl-n 	{ clear: none !important; }
+.cl-l 	{ clear: left !important; }
+.cl-r 	{ clear: right !important; }
+.cl-b 	{ clear: both !important; }
+
+.d-n 	{ display: none !important; }
+.d-i 	{ display: inline !important; }
+.d-b 	{ display: block !important; }
+.d-ib 	{ display: inline-block !important; }
+
+.v-v 	{ visibility: visible !important; }
+.v-h 	{ visibility: hidden !important; }
+.v-c 	{ visibility: collapse !important; }
+
+.ov-v 	{ overflow: visible !important; }
+.ov-h 	{ overflow: hidden !important; }
+.ov-s 	{ overflow: scroll !important; }
+.ov-a 	{ overflow: auto !important; }
+
+.ovx-v 	{ overflow-x: visible !important; }
+.ovx-h 	{ overflow-x: hidden !important; }
+.ovx-s 	{ overflow-x: scroll !important; }
+.ovx-a 	{ overflow-x: auto !important; }
+
+.ovy-v 	{ overflow-y: visible !important; }
+.ovy-h 	{ overflow-y: hidden !important; }
+.ovy-s 	{ overflow-y: scroll !important; }
+.ovy-a 	{ overflow-y: auto !important; }
+
+.rsz-n 	{ resize: none !important; }
+.rsz-b 	{ resize: both !important; }
+.rsz-h 	{ resize: horizontal !important; }
+.rsz-v 	{ resize: vertical !important; }
+
+.cur-a { cursor: auto !important; }
+.cur-d { cursor: default !important; }
+.cur-c { cursor: crosshair !important; }
+.cur-ha { cursor: hand !important; }
+.cur-he { cursor: help !important; }
+.cur-m { cursor: move !important; }
+.cur-p { cursor: pointer !important; }
+.cur-t { cursor: text !important; }

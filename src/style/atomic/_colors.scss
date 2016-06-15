@@ -1,0 +1,27 @@
+.bgc 						{ background-color: $background !important; }
+.bgc-foreground 			{ background-color: $foreground !important; }
+.bgc-foreground-light 		{ background-color: $foreground-light !important; }
+.bgc-foreground-contrast 	{ background-color: $background !important; }
+.bgc-transparent			{ background-color: transparent !important; }
+
+.bgc-primary 				{ background-color: $primary !important; }
+.bgc-secondary 				{ background-color: $secondary !important; }
+.bgc-ok 				{ background-color: $ok !important; }
+.bgc-ko 					{ background-color: $ko !important; }
+.bgc-info 					{ background-color: $info !important; }
+.bgc-warning 				{ background-color: $warning !important; }
+
+
+
+// SEMANTIC COLORS
+.c-bg 						{ color: $background !important; }
+.c-bg-foreground 			{ color: $foreground !important; }
+.c-bg-foreground-light 		{ color: $foreground-light !important; }
+.c-bg-foreground-contrast 	{ color: $background !important; }
+
+.c-primary 					{ color: $primary !important; }
+.c-secondary 				{ color: $secondary !important; }
+.c-ok 					{ color: $ok !important; }
+.c-ko 					{ color: $ko !important; }
+.c-info 					{ color: $info !important; }
+.c-warning 					{ color: $warning !important; }

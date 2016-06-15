@@ -75,7 +75,8 @@ module.exports = (function makeWebpackConfig () {
     // extract css to styles.css
     config.module.loaders.push({
       test: /\.(css|scss)$/,
-      loader: ExtractTextPlugin.extract ("css?sourceMap!sass?sourceMap")
+      loader: ExtractTextPlugin.extract ("css?sourceMap!sass?sourceMap"),
+       exclude: /http/,
     })
 
     config.plugins.push( new ExtractTextPlugin(

@@ -7,7 +7,7 @@
           <p><span class="glyphicon glyphicon-search"></span> Search:</p>
           <input class="form-control" ng-model="$ctrl.query">
         </label>
-        <label>
+        <label class="mt-l">
           <p><span class="glyphicon glyphicon-sort"></span> Sort by:</p>
           <select class="form-control" ng-model="$ctrl.orderProp">
             <option value="name">Alphabetical</option>
@@ -18,12 +18,15 @@
     </form>
     <div class="col-md-10">
       <!--Body content-->
-
+      <p>We've found <strong>{{ ($ctrl.phones|filter:$ctrl.query).length }}</strong> devices</p>
       <ul class="phones">
-        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
-          <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
-          <p>{{phone.snippet}}</p>
+        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+
+           <h3 class="mb-m"><a href="#/phones/{{phone.id}}">{{phone.name}}</a></h3>
+           <div>
+            <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}" class="img-responsive"></a>
+            <p>{{phone.snippet}}</p>
+          </div>
         </li>
       </ul>
 

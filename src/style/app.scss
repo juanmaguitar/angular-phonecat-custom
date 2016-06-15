@@ -1,4 +1,6 @@
 /* app css stylesheet */
+@import "atomic/atomic";
+@import url("http://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 
 body {
   padding-top: 20px;
@@ -7,6 +9,9 @@ body {
 h1 {
   border-bottom: 1px solid gray;
 }
+
+h1 { font: 500 normal 3em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
+h3 { font: normal normal 2em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0;border-bottom: 1px solid #ddd; }
 
 .phone-images {
   background-color: white;
@@ -19,11 +24,19 @@ h1 {
 
 .phones {
   list-style: none;
+  padding:0;
   li {
     clear: both;
-    height: 115px;
-    padding-top: 15px;
+    height: 185px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 25px;
   }
+  p {
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
 }
 
 .thumb {
