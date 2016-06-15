@@ -1,24 +1,19 @@
-import phoneList from 'phone-list.html';
-import phoneDetail from 'phone-detail.html';
-
 function routing ( $routeProvider, $locationProvider ) {
-  'ngInject';
+
   $locationProvider.html5Mode(false);
 
   $routeProvider
 		.when('/phones', {
-		  template: phoneList,
-		  controller: 'PhoneListCtrl',
-		  controllerAs: '$ctrl'
+		  template: '<phone-list></phone-list>'
 		})
 		.when('/phones/:phoneId', {
-			template: phoneDetail,
-		  controller: 'PhoneDetailCtrl',
-		  controllerAs: '$ctrl'
+			template: '<phone-detail></phone-detail>'
 		})
 		.otherwise({
 		  redirectTo: '/phones'
 		});
 };
+
+routing.$inject = ['$routeProvider', '$locationProvider'];
 
 export default routing;

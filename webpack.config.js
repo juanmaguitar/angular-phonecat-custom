@@ -31,7 +31,7 @@ module.exports = (function makeWebpackConfig () {
   config.resolve = {
     modulesDirectories: [
       'node_modules',
-      'src/views'
+      'src/app'
     ]
   };
 

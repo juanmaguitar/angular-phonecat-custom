@@ -1,6 +1,7 @@
 class PhoneDetailCtrl {
   constructor ($routeParams, Phone) {
 		var phoneId = $routeParams.phoneId;
+
 		this.phone = Phone.get(
 			{ phoneId },
 			(phone) => this.mainImageUrl = phone.images[0]
