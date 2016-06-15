@@ -18,8 +18,8 @@ module.exports = (function makeWebpackConfig () {
   config.output = {
     path: path.resolve(__dirname, './dist'),
     publicPath: isProd ? './' : 'http://localhost:8080/',
-    filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
-    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+    filename: isProd ? 'js/[name].[hash].js' : 'js/[name].bundle.js',
+    chunkFilename: isProd ? 'js/[name].[hash].js' : 'js/[name].bundle.js'
   };
 
   if (isProd) {
@@ -77,7 +77,7 @@ module.exports = (function makeWebpackConfig () {
       test: /\.(css|scss)$/,
       loader: ExtractTextPlugin.extract ("css?sourceMap!sass?sourceMap")
     })
-    config.plugins.push( new ExtractTextPlugin('styles.css') );
+    config.plugins.push( new ExtractTextPlugin('css/styles.css') );
 
     config.plugins.push(
       new webpack.NoErrorsPlugin(),
@@ -85,7 +85,8 @@ module.exports = (function makeWebpackConfig () {
       new webpack.optimize.UglifyJsPlugin(),
       new CopyWebpackPlugin( [
           { from: path.resolve(__dirname, './src/_public/data'), to: 'data' },
-          { from: path.resolve(__dirname, './src/_public/img'), to: 'img' }
+          { from: path.resolve(__dirname, './src/_public/img'), to: 'img' },
+          { from: path.resolve(__dirname, './dist/**/*'), to: 'assets' }
         ],
         { ignore: ['*.html'] }
       )
