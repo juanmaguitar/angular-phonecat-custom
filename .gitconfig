@@ -1,0 +1,3 @@
+[alias]
+    random = !"git add -A; git commit -am \"$(echo $(curl -s http://whatthecommit.com/index.txt)\" (http://whatthecommit.com)\")\"; git pull --rebase; git push"
+    dist = !"git add dist; git commit -am \"dist $(date +'%h-%m %s')\"; git pull --rebase; git push"
