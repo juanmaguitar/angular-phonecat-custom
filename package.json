@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dist" : "git add dist && git commit -am \"dist $(date +'%h-%m %s')\" &&  git push",
+    "dist-fonts" : "mv dist/glyphicons* dist/css",
+    "dist": "git add dist && git commit -am \"dist $(date +'%h-%m %s')\" &&  git push",
     "gh-pages": "git subtree push --prefix dist origin gh-pages",
-    "deploy" : "npm run build && npm run dist && npm run gh-pages",
-    "build": "rimraf dist && webpack --bail --progress --profile",
+    "deploy": "npm run build && npm run dist && npm run gh-pages",
+    "build": "rimraf dist && webpack --bail --progress --profile && npm run dist-fonts",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "start": "npm run server"
   },
@@ -32,6 +33,7 @@
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },

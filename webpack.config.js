@@ -47,7 +47,7 @@ module.exports = (function makeWebpackConfig () {
       // Images loaders
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'file'
+        loader: 'file?name=[name].[ext]?[hash]'
       },
       // HTML loaders
       { test: /\.html$/, loader: 'raw', exclude: /node_modules/ }
@@ -77,7 +77,11 @@ module.exports = (function makeWebpackConfig () {
       test: /\.(css|scss)$/,
       loader: ExtractTextPlugin.extract ("css?sourceMap!sass?sourceMap")
     })
-    config.plugins.push( new ExtractTextPlugin('css/styles.css') );
+
+    config.plugins.push( new ExtractTextPlugin(
+      "ExtractTextPlugin",
+      "css/styles.css", { allChunks: true }
+    ));
 
     config.plugins.push(
       new webpack.NoErrorsPlugin(),
@@ -85,8 +89,7 @@ module.exports = (function makeWebpackConfig () {
       new webpack.optimize.UglifyJsPlugin(),
       new CopyWebpackPlugin( [
           { from: path.resolve(__dirname, './src/_public/data'), to: 'data' },
-          { from: path.resolve(__dirname, './src/_public/img'), to: 'img' },
-          { from: path.resolve(__dirname, './dist/**/*'), to: 'assets' }
+          { from: path.resolve(__dirname, './src/_public/img'), to: 'img' }
         ],
         { ignore: ['*.html'] }
       )
