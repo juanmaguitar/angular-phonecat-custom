@@ -7,10 +7,10 @@ import filters from '../../filters';
 import template from './phone-detail.template.html';
 import controller from './phone-detail.controller.js';
 
-angular.module('phoneDetail', [ ngRoute , services, filters ])
+const phoneDetail = angular.module('phoneDetail', [ ngRoute , services, filters ])
 	.component('phoneDetail', {
 		template,
 		controller
 	})
 
-export default 'phoneDetail';
+export default phoneDetail;

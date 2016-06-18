@@ -7,7 +7,10 @@ function routing ( $routeProvider, $locationProvider ) {
 		  template: '<phone-list></phone-list>'
 		})
 		.when('/phones/:phoneId', {
-			template: '<phone-detail></phone-detail>'
+			template: '<phone-detail></phone-detail>',
+			resolve: function() {
+				console.log("resolve....")
+			}
 		})
 		.otherwise({
 		  redirectTo: '/phones'

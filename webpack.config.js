@@ -12,7 +12,8 @@ module.exports = (function makeWebpackConfig () {
   var config = {};
 
   config.entry = {
-    app: './src/app/app.js'
+    app: './src/app/app.js',
+    vendor: ['angular', 'angular-route','angular-resource']
   };
 
   config.output = {
@@ -88,6 +89,7 @@ module.exports = (function makeWebpackConfig () {
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
       new CopyWebpackPlugin( [
           { from: path.resolve(__dirname, './src/_public/data'), to: 'data' },
           { from: path.resolve(__dirname, './src/_public/img'), to: 'img' }

@@ -6,10 +6,10 @@ import services from '../../services';
 import template from './phone-list.template.html';
 import controller from './phone-list.controller.js';
 
-angular.module('phoneList', [ ngRoute , services ])
+const phoneList = angular.module('phoneList', [ ngRoute , services ])
 	.component('phoneList', {
 		template,
 		controller
 	})
 
-export default 'phoneList';
+export default phoneList;
