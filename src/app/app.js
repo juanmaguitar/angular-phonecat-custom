@@ -9,8 +9,5 @@ import ngRoute from 'angular-route';
 import phoneList from './components/phone-list';
 import phoneDetail from './components/phone-detail';
 
-import routing from './app.config.js';
-
 angular.module('phonecatApp', [ ngRoute,  phoneList.name, phoneDetail.name ])
-  .config(routing);
 
